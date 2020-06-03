@@ -2,16 +2,10 @@
 
 
 
-```
-Group members:
-James Barraza
-Veronica Ratcliff
-Abby Ko
-Ray King
-```
 
 
 
-[Data Set](https://data.austintexas.gov/Health-and-Community-Services/Austin-Animal-Center-Outcomes/9t4d-g238/data)
+
+[Project Proposal](https://docs.google.com/document/d/1On5PE5M6OqQgPysjQWSGWOvaLvAyWxK5BDPsP05yIoI/edit?ts=5ed705ca)
 
 
