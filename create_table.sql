@@ -10,7 +10,9 @@ CREATE TABLE Austin_animals (
     "Breed" VARCHAR NOT NULL,
     "Color"VARCHAR NOT NULL,
     "DateTime_Intake" Date,
-    "Found_Location" VARCHAR NOT NULL
+    "Found_Location" VARCHAR NOT NULL,
     "Intake_Type" VARCHAR,
-    "Age_upon_Intake" VARCHAR
+    "Age_upon_Intake" VARCHAR,
+    "Age_upon_Outcome_days" int not NULL,
+    "Age_upon_Intake_days" int not NUll
 );
