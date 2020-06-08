@@ -71,7 +71,8 @@ async function getdata(choosetype) {
     var intake_keys = Object.keys(animal_counts_intake)
     var intake_value = Object.values(animal_counts_intake)
 
-    // sort for freq outcome type
+
+    // sort for freq outcome and income type
     var sortable = [];
     for (var x in animal_counts) {
         sortable.push([x, animal_counts[x]]);
@@ -79,26 +80,31 @@ async function getdata(choosetype) {
     sortable.sort(function (a, b) {
         return a[1] - b[1];
     });
-    // plotly(barchart)
-    var Animals_outcomevalue = sortable.map(d => d[1])
-    var Animals_outcomekey = sortable.map(d => d[0])
+    // Keep top 5 outcome type
+    var order = sortable.reverse()
+    var top5_outcome = order.slice(0, 5)
 
+    // plotly(barchart)
+    var Animals_outcomekey = top5_outcome.map(d => d[0])
+    var Animals_outcomevalue = top5_outcome.map(d => d[1])
     var trace = {
         x: Animals_outcomekey,
         y: Animals_outcomevalue,
+        marker: { color: 'coral' },
         type: "bar",
     };
     var layout = {
         title: {
-            text: 'Where did the animals go?',
+            text: 'Where Did the Animals Go?',
             font: {
-                size: 24
+                size: 24,
+                family: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif"
+
             }
         }
     }
     var data_bar = [trace];
     Plotly.newPlot("bar", data_bar, layout);
-
 
     // charts.js doughnut chart
     new Chart(document.getElementById("doughnut-chart"), {
@@ -107,7 +113,7 @@ async function getdata(choosetype) {
             labels: intake_keys,
             datasets: [
                 {
-                    label: " ",
+                    // label: " ",
                     backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
                     data: intake_value
                 }
@@ -117,10 +123,11 @@ async function getdata(choosetype) {
             title: {
                 fontSize: 24,
                 display: true,
-                text: 'How the animals were found?'
+                text: 'How the Animals Were Found?'
             }
         }
     });
+
 
 
 }
