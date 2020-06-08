@@ -67,7 +67,7 @@ async function getdata(choosetype) {
             animal_counts_intake[value]++;
         }
     }
-
+    // intake value
     var intake_keys = Object.keys(animal_counts_intake)
     var intake_value = Object.values(animal_counts_intake)
 
@@ -79,8 +79,6 @@ async function getdata(choosetype) {
     sortable.sort(function (a, b) {
         return a[1] - b[1];
     });
-
-
     // plotly(barchart)
     var Animals_outcomevalue = sortable.map(d => d[1])
     var Animals_outcomekey = sortable.map(d => d[0])
