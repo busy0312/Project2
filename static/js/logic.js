@@ -36,7 +36,19 @@ function handlechange() {
     // Build the plot with the new data
     getdata(choosetype);
 }
-
+// funtion to get count duplicate value in intake and outcome types
+function gettypes(x){
+    var animal_counts = {}, i, value;
+    for (i = 0; i < x.length; i++) {
+        value = x[i];
+        if (typeof animal_counts[value] === "undefined") {
+            animal_counts[value] = 1;
+        } else {
+            animal_counts[value]++;
+        }
+    }
+    return animal_counts
+}
 
 async function getdata(choosetype) {
     var url = "https://raw.githubusercontent.com/busy0312/Project2/master/Animals.csv"
@@ -46,27 +58,8 @@ async function getdata(choosetype) {
     var animals_outcometype = animals.map(d => d.Outcome_Type)
     var animals_intaketype = animals.map(d => d.Intake_Type)
     // counts for different outcome and intake types
-    var animal_counts = {}, i, value;
-    var animal_counts_intake = {}, i, value;
-    for (i = 0; i < animals_outcometype.length; i++) {
-
-        value = animals_outcometype[i];
-        if (typeof animal_counts[value] === "undefined") {
-            animal_counts[value] = 1;
-        } else {
-            animal_counts[value]++;
-        }
-    }
-
-    for (i = 0; i < animals_intaketype.length; i++) {
-
-        value = animals_intaketype[i];
-        if (typeof animal_counts_intake[value] === "undefined") {
-            animal_counts_intake[value] = 1;
-        } else {
-            animal_counts_intake[value]++;
-        }
-    }
+    var animal_counts = gettypes(animals_outcometype)
+    var animal_counts_intake = gettypes(animals_intaketype)
     // intake value
     var intake_keys = Object.keys(animal_counts_intake)
     var intake_value = Object.values(animal_counts_intake)
