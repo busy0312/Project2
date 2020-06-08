@@ -50,6 +50,18 @@ function gettypes(x){
     return animal_counts
 }
 
+// function to get ascending value
+function sortvalue(list){
+    var sortable = [];
+    for (var x in list) {
+        sortable.push([x, list[x]]);
+    }
+    sortable.sort(function (a, b) {
+        return a[1] - b[1];
+    });
+return sortable
+}
+
 async function getdata(choosetype) {
     var url = "https://raw.githubusercontent.com/busy0312/Project2/master/Animals.csv"
     var data = await d3.csv(url);
@@ -63,16 +75,8 @@ async function getdata(choosetype) {
     // intake value
     var intake_keys = Object.keys(animal_counts_intake)
     var intake_value = Object.values(animal_counts_intake)
+    var sortable=sortvalue(animal_counts)
 
-
-    // sort for freq outcome and income type
-    var sortable = [];
-    for (var x in animal_counts) {
-        sortable.push([x, animal_counts[x]]);
-    }
-    sortable.sort(function (a, b) {
-        return a[1] - b[1];
-    });
     // Keep top 5 outcome type
     var order = sortable.reverse()
     var top5_outcome = order.slice(0, 5)
