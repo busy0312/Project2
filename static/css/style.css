@@ -19,7 +19,7 @@ body {
     margin-left: 30px; 
     padding: inherit; 
     font-weight: bold; 
-    background-color:grey;
+    /* background-color:grey; */
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
@@ -59,7 +59,7 @@ body {
   p {
     color: black;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 16;
+    font-size: 12;
   }
 
 /* Box Class */
@@ -86,28 +86,104 @@ body {
 /* The styles for the parallax */
 .hero {
   position: relative;
-  height: 700px;
+  height: 500px;
   padding: 20px;
   margin: 0;
   background: black;
-  background-image: url("../../images/dogscats.jpg");
+  background-image: url("../../images/backdrop.jpg");
   background-position: center;
   background-size: cover;
 }
 
 .hero h1 {
-  margin-top: 400px;
+  margin-top: 200px;
   font-size: 48px;
-  color: black;
+  color: white;
   animation: title 1.2s forwards linear;
 }
 
 .hero p {
-  font-size: 3rem;
-  color: black;
+  font-size: 1.5rem;
+  color: white;
   animation: subtitle 1.2s forwards linear;
   animation-delay: 1.2s;
 }
+
+.herodog {
+  position: relative;
+  height: 500px;
+  padding: 20px;
+  margin: 0;
+  background: black;
+  background-position: center;
+  background-image: url("../../images/dogimg.jpg");
+  background-size: cover;
+}
+
+.herodog h1 {
+  margin-top: 200px;
+  font-size: 48px;
+  color: white;
+  animation: title 1.2s forwards linear;
+}
+
+.herodog p {
+  font-size: 1.5rem;
+  color: white;
+  animation: subtitle 1.2s forwards linear;
+  animation-delay: 1.2s;
+}
+
+.herocat {
+  position: relative;
+  height: 500px;
+  padding: 20px;
+  margin: 0;
+  background: black;
+  background-position: center;
+  background-image: url("../../images/catsimg.jpg");
+  background-size: cover;
+}
+
+.herocat h1 {
+  margin-top: 200px;
+  font-size: 48px;
+  color: white;
+  animation: title 1.2s forwards linear;
+}
+
+.herocat p {
+  font-size: 1.5rem;
+  color: white;
+  animation: subtitle 1.2s forwards linear;
+  animation-delay: 1.2s;
+}
+
+.herodogcat {
+  position: relative;
+  height: 500px;
+  padding: 20px;
+  margin: 0;
+  background: black;
+  background-position: center;
+  background-image: url("../../images/catdogimg.jpg");
+  background-size: cover;
+}
+
+.herodogcat h1 {
+  margin-top: 200px;
+  font-size: 48px;
+  color: white;
+  animation: title 1.2s forwards linear;
+}
+
+.herodogcat p {
+  font-size: 1.5rem;
+  color: white;
+  animation: subtitle 1.2s forwards linear;
+  animation-delay: 1.2s;
+}
+
 
   /* Images */
 img{

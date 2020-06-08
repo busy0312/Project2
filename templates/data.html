@@ -4,22 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Pet Wars: Cats vs Dogs</title>
+    <title>Dogs Data</title>
 
      <!-- Bootstrap CSS -->
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <!-- CSS Link-->
-    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
     
 </head>
 <body id="index">
     <!-- Navigation Section -->
     <div class="navigation">      
         <nav class="navbar navbar-expand-lg navbar-light">
-          <a class="navbar-brand" href="index.html">
-            <img class="nav-logo" style="zoom:50%" src="images/dogcatlogo.jpeg">
+          <a class="navbar-brand" href="../index.html">
+            <img class="nav-logo" style="zoom:50%" src="../images/dogcatlogo.jpeg">
           </a>            
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
              aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
@@ -32,58 +32,27 @@
                    Animal Type
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="templates/dog.html">Dog</a>
-                  <a class="dropdown-item" href="templates/cat.html">Cat</a>
-                  <a class="dropdown-item" href="templates/comparison.html">Both</a>
+                  <a class="dropdown-item" href="dog.html">Dog</a>
+                  <a class="dropdown-item" href="cat.html">Cat</a>
+                  <a class="dropdown-item" href="comparison.html">Both</a>
                 </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="templates/data.html">Data</a>
+                <a class="nav-link" href="data.html">Data</a>
               </li>
             </ul>
           </div>            
         </nav>       
-    
-    </div>  
+    </div> 
 
-    <div class="hero text-center">
-      <h1>Austin Animal Center: Dogs & Cats</h1>
-      <p>Use the interactive charts below to explore the dataset</p>
-  </div>
-
-<!-- Content Section-->
-<div class="container">
-    <div class="row">
-      <div class="col-md-2">
-        <div class="well">
-          <h7>Animal Types:</h7>
-          <select id="selDataset" onchange="optionChanged(this.value)"></select>
+    <!-- Content Section -->
+    <div class="container">
+        <div class="row">
+            <div><iframe width="950px" title="Austin Animal Center Found Pets Map" height="808px" src="https://data.austintexas.gov/w/hye6-gvq2/7r79-5ncn?cur=hy7tYbnJDH6&from=root" frameborder="0"scrolling="no"><a href="https://data.austintexas.gov/Health-and-Community-Services/Austin-Animal-Center-Found-Pets-Map/hye6-gvq2" title="Austin Animal Center Found Pets Map" target="_blank">Austin Animal Center Found Pets Map</a></iframe></div>
         </div>
-      </div>
     </div>
-  <div class="row">
-    <div class="col-lg-7 col-md-12">
-      <div class="box" style="padding-bottom: 5px;">
-        <h3 class="title">Pet Wars: Cats vs Dogs</h3>
-        <hr>
-        <img src="" class="vizualization rounded float-left" alt="">
-        <p>
-          The Great Debate continues...
-        </p>
-        <p>
-          This paragraph 2....
-        </p>
-      </div>
-    </div>
-    
-    <div id="map"></div>
 
 
-
-
-  </div>
-</div>
-    
   <!-- Footer Section -->
   <footer>
     <div class="footer">&copy; Copyright Coding Bootcamp 2020</div>
