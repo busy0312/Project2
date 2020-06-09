@@ -96,19 +96,20 @@ async function getdata(choosetype) {
     const arrSum=diffdays.filter(x => x > 0).reduce((x, y) => x + y, 0)
     // calculate avg
     const Average_days=Math.ceil(arrSum/diffdays.length)
-    console.log(Average_days)
+    //append the data on alert bar
     var adpt_time=d3.select('.alert-secondary')
     adpt_time.append('h5').text(`The average time for a ${choosetype} to be adopted is ${Average_days} days.`)
 
     // counts for different outcome and intake types
     var animal_counts = gettypes(animals_outcometype)
     var animal_counts_intake = gettypes(animals_intaketype)
+    //drop undefined value
+    delete animal_counts_intake['']
     // intake value
-    
     var intake_keys = Object.keys(animal_counts_intake)
     var intake_value = Object.values(animal_counts_intake)
     var sortable=sortvalue(animal_counts)
-
+    
     // Keep top 5 outcome type
     var order = sortable.reverse()
     var top5_outcome = order.slice(0, 5)
