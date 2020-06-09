@@ -37,7 +37,7 @@ function handlechange() {
     getdata(choosetype);
 }
 // funtion to get count duplicate value in intake and outcome types
-function gettypes(x){
+function gettypes(x) {
     var animal_counts = {}, i, value;
     for (i = 0; i < x.length; i++) {
         value = x[i];
@@ -51,7 +51,7 @@ function gettypes(x){
 }
 
 // function to get ascending value
-function sortvalue(list){
+function sortvalue(list) {
     var sortable = [];
     for (var x in list) {
         sortable.push([x, list[x]]);
@@ -59,7 +59,7 @@ function sortvalue(list){
     sortable.sort(function (a, b) {
         return a[1] - b[1];
     });
-return sortable
+    return sortable
 }
 
 async function getdata(choosetype) {
@@ -75,7 +75,7 @@ async function getdata(choosetype) {
     // intake value
     var intake_keys = Object.keys(animal_counts_intake)
     var intake_value = Object.values(animal_counts_intake)
-    var sortable=sortvalue(animal_counts)
+    var sortable = sortvalue(animal_counts)
 
     // Keep top 5 outcome type
     var order = sortable.reverse()
@@ -124,7 +124,6 @@ async function getdata(choosetype) {
             }
         }
     });
-
 
 
 }
