@@ -72,27 +72,40 @@ function difftime(t1, t2) {
     return diff_days
 }
 
+
+
+
 async function getdata(choosetype) {
     var url = "https://raw.githubusercontent.com/busy0312/Project2/master/Animals.csv"
     var data = await d3.csv(url);
     var animalData = data.map(d => d)
     var animals = animalData.filter(d => d.Animal_Type === choosetype)
-    var breed = animals.map(d => d.Breed)
+
     var adoption = animals.filter(d => d.Outcome_Type == 'Adoption')
+
     // get all time that animals stayed at the center
     var animals_outcome_t = adoption.map(d => d.DateTime_Outcome)
     var animals_intake_t = adoption.map(d => d.DateTime_Intake)
     // parse time
     var outcome_t = animals_outcome_t.map(d => Date.parse(d))
     var intake_t = animals_intake_t.map(d => Date.parse(d))
+
+
     // get all the outcome and intake types
     var animals_outcometype = animals.map(d => d.Outcome_Type)
     var animals_intaketype = animals.map(d => d.Intake_Type)
+
+
     // To set two dates to two variables 
     var outcome_date = outcome_t.map(d => new Date(d))
     var intake_date = intake_t.map(d => new Date(d))
+    // how many adop every year
+    var keepyear = outcome_date.map(d => d.getFullYear())
+    var total_adopt = gettypes(keepyear)
+
     // calculate time difference
     const diffdays = difftime(intake_date, outcome_date)
+
     // sum and get rid of NAN
     const arrSum = diffdays.filter(x => x > 0).reduce((x, y) => x + y, 0)
     // calculate avg
@@ -104,7 +117,7 @@ async function getdata(choosetype) {
     // counts for different outcome and intake types
     var animal_counts = gettypes(animals_outcometype)
     var animal_counts_intake = gettypes(animals_intaketype)
-    var animal_breed = gettypes(breed)
+
 
     //drop undefined value
     delete animal_counts_intake['']
@@ -113,25 +126,22 @@ async function getdata(choosetype) {
     var intake_value = Object.values(animal_counts_intake)
     // descending order
     var sortable_counts = sortvalue(animal_counts)
-    var sortable_breed = sortvalue(animal_breed)
+
     // Keep top 5 outcome type
     var order = sortable_counts.reverse()
     var top5_outcome = order.slice(0, 5)
-    //keep top 10 animal_breed 
-    var order_breed = sortable_breed.reverse()
-    var top10_breed = order_breed.slice(0, 10)
-    //plotly(line for breed)
-    var breed_key = top10_breed.map(d => d[0])
-    var breed_value = top10_breed.map(d => d[1])
-    var trace_breed = {
-        x: breed_key,
-        y: breed_value,
+
+    //plotly(line for adoption)
+    var trace_adopt = {
+        x: Object.keys(total_adopt),
+        y: Object.values(total_adopt),
         marker: { color: 'blue' },
+        fill: 'tonexty',
         type: "scatter",
     };
     var layout = {
         title: {
-            text: 'Top 10 Breeds in the center',
+            text: 'Adoption over time',
             font: {
                 size: 24,
                 family: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif"
@@ -140,8 +150,8 @@ async function getdata(choosetype) {
         }
     }
 
-    var data_breed = [trace_breed];
-    Plotly.newPlot('scatter', data_breed, layout);
+    var data_adopt = [trace_adopt];
+    Plotly.newPlot('scatter', data_adopt, layout);
     // plotly(bar for outcome)
     var Animals_outcomekey = top5_outcome.map(d => d[0])
     var Animals_outcomevalue = top5_outcome.map(d => d[1])

@@ -23,8 +23,7 @@ function makeron(x) {
             draggable: false,
             title: d["Found Location"]
         }).addTo(myMap)
-            .bindPopup('<b>' + Id + '</b><br>' + type + '<br>' + location)
-
+        .bindPopup('<b>' + Id + '</b><br>' + type + '<br>' + location)
     })
 }
 
