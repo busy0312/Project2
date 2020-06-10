@@ -141,7 +141,7 @@ async function getdata(choosetype) {
     };
     var layout = {
         title: {
-            text: 'Adoption over time',
+            text: 'Adoption over Time',
             font: {
                 size: 24,
                 family: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif"
