@@ -37,7 +37,7 @@ function handlechange() {
     getdata(choosetype);
 }
 // funtion to get count duplicate value in intake and outcome types
-function gettypes(x){
+function gettypes(x) {
     var animal_counts = {}, i, value;
     for (i = 0; i < x.length; i++) {
         value = x[i];
@@ -51,7 +51,7 @@ function gettypes(x){
 }
 
 // function to get ascending value
-function sortvalue(list){
+function sortvalue(list) {
     var sortable = [];
     for (var x in list) {
         sortable.push([x, list[x]]);
@@ -59,16 +59,16 @@ function sortvalue(list){
     sortable.sort(function (a, b) {
         return a[1] - b[1];
     });
-return sortable
+    return sortable
 }
 // function to get time differences
-function difftime(t1,t2){
-    var diff=[]
-    var diff_days=[]
-    for(var x in t1,t2){
-       diff.push(Math.abs(t2[x]-t1[x]))
+function difftime(t1, t2) {
+    var diff = []
+    var diff_days = []
+    for (var x in t1, t2) {
+        diff.push(Math.abs(t2[x] - t1[x]))
     }
-    var diff_days=diff.map(d=>Math.ceil(d/(1000 * 60 * 60 * 24)))  
+    var diff_days = diff.map(d => Math.ceil(d / (1000 * 60 * 60 * 24)))
     return diff_days
 }
 
@@ -77,44 +77,72 @@ async function getdata(choosetype) {
     var data = await d3.csv(url);
     var animalData = data.map(d => d)
     var animals = animalData.filter(d => d.Animal_Type === choosetype)
-    var adoption= animals.filter(d=>d.Outcome_Type=='Adoption')
+    var breed = animals.map(d => d.Breed)
+    var adoption = animals.filter(d => d.Outcome_Type == 'Adoption')
     // get all time that animals stayed at the center
     var animals_outcome_t = adoption.map(d => d.DateTime_Outcome)
     var animals_intake_t = adoption.map(d => d.DateTime_Intake)
     // parse time
-    var outcome_t= animals_outcome_t.map(d=>Date.parse(d))
-    var intake_t= animals_intake_t.map(d=>Date.parse(d))
-    // get all the types
+    var outcome_t = animals_outcome_t.map(d => Date.parse(d))
+    var intake_t = animals_intake_t.map(d => Date.parse(d))
+    // get all the outcome and intake types
     var animals_outcometype = animals.map(d => d.Outcome_Type)
     var animals_intaketype = animals.map(d => d.Intake_Type)
     // To set two dates to two variables 
-    var outcome_date=outcome_t.map(d=>new Date(d))
-    var intake_date =intake_t.map(d=>new Date(d)) 
+    var outcome_date = outcome_t.map(d => new Date(d))
+    var intake_date = intake_t.map(d => new Date(d))
     // calculate time difference
-    const diffdays =difftime(intake_date,outcome_date)
+    const diffdays = difftime(intake_date, outcome_date)
     // sum and get rid of NAN
-    const arrSum=diffdays.filter(x => x > 0).reduce((x, y) => x + y, 0)
+    const arrSum = diffdays.filter(x => x > 0).reduce((x, y) => x + y, 0)
     // calculate avg
-    const Average_days=Math.ceil(arrSum/diffdays.length)
+    const Average_days = Math.ceil(arrSum / diffdays.length)
     //append the data on alert bar
-    var adpt_time=d3.select('.alert-secondary')
+    var adpt_time = d3.select('.alert-secondary')
     adpt_time.append('h5').text(`The average time for a ${choosetype} to be adopted is ${Average_days} days.`)
 
     // counts for different outcome and intake types
     var animal_counts = gettypes(animals_outcometype)
     var animal_counts_intake = gettypes(animals_intaketype)
+    var animal_breed = gettypes(breed)
+
     //drop undefined value
     delete animal_counts_intake['']
     // intake value
     var intake_keys = Object.keys(animal_counts_intake)
     var intake_value = Object.values(animal_counts_intake)
-    var sortable=sortvalue(animal_counts)
-    
+    // descending order
+    var sortable_counts = sortvalue(animal_counts)
+    var sortable_breed = sortvalue(animal_breed)
     // Keep top 5 outcome type
-    var order = sortable.reverse()
+    var order = sortable_counts.reverse()
     var top5_outcome = order.slice(0, 5)
+    //keep top 10 animal_breed 
+    var order_breed = sortable_breed.reverse()
+    var top10_breed = order_breed.slice(0, 10)
+    //plotly(line for breed)
+    var breed_key = top10_breed.map(d => d[0])
+    var breed_value = top10_breed.map(d => d[1])
+    var trace_breed = {
+        x: breed_key,
+        y: breed_value,
+        marker: { color: 'blue' },
+        type: "scatter",
+    };
+    var layout = {
+        title: {
+            text: 'Top 10 Breeds in the center',
+            font: {
+                size: 24,
+                family: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif"
 
-    // plotly(barchart)
+            }
+        }
+    }
+
+    var data_breed = [trace_breed];
+    Plotly.newPlot('scatter', data_breed, layout);
+    // plotly(bar for outcome)
     var Animals_outcomekey = top5_outcome.map(d => d[0])
     var Animals_outcomevalue = top5_outcome.map(d => d[1])
     var trace = {
