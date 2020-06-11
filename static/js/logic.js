@@ -130,7 +130,7 @@ async function getdata(choosetype) {
     // Keep top 5 outcome type
     var order = sortable_counts.reverse()
     var top5_outcome = order.slice(0, 5)
-
+    console.log(top5_outcome)
     //plotly(line for adoption)
     var trace_adopt = {
         x: Object.keys(total_adopt),
@@ -159,7 +159,7 @@ async function getdata(choosetype) {
     var trace = {
         x: Animals_outcomekey,
         y: Animals_outcomevalue,
-        marker: { color: 'coral' },
+        marker: { color: 'DarkSeaGreen' },
         type: "bar",
     };
     var layout = {
