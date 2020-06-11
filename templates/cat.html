@@ -6,57 +6,82 @@
      <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Cat Data</title>
 
-     <!-- Bootstrap CSS -->
-     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- Tableau -->
+    <script src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
     <!-- CSS Link-->
     <link rel="stylesheet" type="text/css" href="../static/css/style.css">
-    
-</head>
-<body id="index">
+
     <!-- Navigation Section -->
     <div class="navigation">      
-        <nav class="navbar navbar-expand-lg navbar-light">
-          <a class="navbar-brand" href="../index.html">
-            <img class="nav-logo" style="zoom:50%" src="../images/dogcatlogo.jpeg">
-          </a>            
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-             aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                   Animal Type
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="dog.html">Dog</a>
-                  <a class="dropdown-item" href="cat.html">Cat</a>
-                  <a class="dropdown-item" href="comparison.html">Both</a>
-                </div>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="data.html">Map</a>
-              </li>
-            </ul>
-          </div>            
-        </nav>       
-    
-    </div>  
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="../index.html">
+          <img class="nav-logo" style="zoom:50%" src="../images/dogcatlogo.jpeg">
+        </a>            
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+           aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 Animal Type
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="dog.html">Dog</a>
+                <a class="dropdown-item" href="cat.html">Cat</a>
+                <a class="dropdown-item" href="comparison.html">Both</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="data.html">Map</a>
+            </li>
+          </ul>
+        </div>            
+      </nav>       
+  
+  </div>  
 
-    <!-- Content Section -->
-    <div class="herocat text-center">
-        <h1>Cat Data</h1>
-        <p>Detailed Graphs</p>
-    </div>
- 
+  <div class="herocat text-center">
+      <h1>Cat Data</h1>
+      <p>Detailed Graphs</p>
+  </div>
+    
+</head>
+
+<!-- Content Section -->
+<body onload="initViz();">
+  <div class="container">
+    <div class="row">
+        <div class="col-lg-7 col-md-12">
+          <!-- <div class="box" style="padding-bottom: 5px;"></div> -->
+          <h3 class="title">Pet Wars: Cats</h3>
+          <hr>
+          <div id="vizContainer" style="width:800px; height:700px;"></div>
+
+          <script>
+              function initViz() {
+                  var containerDiv = document.getElementById("vizContainer"),
+                      url = "http://public.tableau.com/views/Project2_15912326330830/CatDashboard"
+                  options = {
+                      hideTabs: true,
+                      onFirstInteractive: function() {
+                          console.log("Run this code when the viz has finished loading.");
+                      }
+                  };
+                  // Create a viz object and embed it in the container div.
+                  var viz = new tableau.Viz(containerDiv, url, options);
+              }
+          </script>
+
 
   <!-- Footer Section -->
-  <footer>
-    <div class="footer">&copy; Copyright Coding Bootcamp 2020</div>
-  </footer>
+  <!-- <footer>
+    <div class="footer">UT Data Analytics & Visualuzation Bootcamp Project 2020</div>
+  </footer> -->
 
       <!-- API key -->
       <script type="text/javascript" src="static/js/config.js"></script>

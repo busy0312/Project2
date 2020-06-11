@@ -10,13 +10,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
     <!-- CSS Link-->
     <link rel="stylesheet" type="text/css" href="static/css/style.css">
 
-</head>
-
-<body id="index">
     <!-- Navigation Section -->
     <div class="navigation">
         <nav class="navbar navbar-expand-lg navbar-light">
@@ -55,25 +51,28 @@
         <h1>Austin Animal Center: Dogs & Cats</h1>
         <p>Use the interactive charts below to explore the dataset</p>
     </div>
+</head>
 
+<body>
     <!-- Content Section-->
     <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="well">
-                    <h5>Animal Types:</h5>
-                    <select id="selDataset"></select>
-                </div>
-            </div>
-        </div>
-        <div class="alert alert-secondary" role="alert">
-        </div>
         <div class="row">
             <div class="col-lg-7 col-md-12">
                 <div class="box" style="padding-bottom: 5px;">
                     <h3 class="title">Pet Wars: Cats vs Dogs</h3>
                     <hr>
                     <img src="" class="vizualization rounded float-left" alt="">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="well">
+                                <h5>Animal Types:</h5>
+                                <select id="selDataset"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alert alert-secondary" role="alert">
+                    </div>
+                    
                     <div class="row">
                         <div class="col-md-12">
                             <div id="scatter"></div>
@@ -95,10 +94,10 @@
         </div>
     </div>
 
-    <!-- Footer Section -->
+    <!-- Footer Section
     <footer>
-        <div class="footer">&copy; Copyright Coding Bootcamp 2020</div>
-    </footer>
+        <div class="footer">UT Data Analytics & Visualuzation Bootcamp Project 2020</div>
+    </footer> -->
 
     <!-- API key -->
     <script type="text/javascript" src="static/js/config.js"></script>
