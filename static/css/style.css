@@ -74,6 +74,10 @@ body {
     background-color: white; 
   
   }
+#scatter{
+  position: relative;
+}
+
 #bar{
 margin-top:50px ;
 }
@@ -260,6 +264,7 @@ footer {
         background-color: white; 
       
       }
+    
 
     button{
         margin-right: 30px; 
