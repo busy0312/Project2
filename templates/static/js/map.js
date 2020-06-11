@@ -17,7 +17,9 @@ function makeron(x) {
     var markers = x.filter(d => d["Coord1"] != null).map(d => {
         var coord = d["Coord1"].split(",").map(d => +d)
         var type = d['Type']
-        var location = d['Found Location']
+        var location = d['Found Location'].split("(").map(d => d)
+        var location_new=location[0]
+        console.log(location_new)
         var Id = d['Animal ID']
         var paw = L.icon({
             iconUrl: 'paw.png',
@@ -30,7 +32,7 @@ function makeron(x) {
             title: d["Found Location"],
             icon: paw
         }).addTo(myMap)
-            .bindPopup('<b>' + Id + '</b><br>' + type + '<br>' + location)
+            .bindPopup('<b>' + Id + '</b><br><b>' + type + '</b><hr>' + location_new)
     })
 }
 
