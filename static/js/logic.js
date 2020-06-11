@@ -150,9 +150,9 @@ async function getdata(choosetype) {
         }
     }
     var config = {responsive: true}
-
     var data_adopt = [trace_adopt];
     Plotly.newPlot('scatter', data_adopt, layout,config);
+
     // plotly(bar for outcome)
     var Animals_outcomekey = top5_outcome.map(d => d[0])
     var Animals_outcomevalue = top5_outcome.map(d => d[1])
