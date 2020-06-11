@@ -41,6 +41,9 @@ body {
     
   }
 
+  canvas{
+    padding-left: 10%;
+  }
   /* Body*/
   body {
     background-color: #ededed;

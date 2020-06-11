@@ -144,14 +144,15 @@ async function getdata(choosetype) {
             text: 'Adoption over Time',
             font: {
                 size: 24,
-                family: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif"
+                family: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+                color: '#666'
 
             }
         }
     }
-    var config = {responsive: true}
+    var config = { responsive: true }
     var data_adopt = [trace_adopt];
-    Plotly.newPlot('scatter', data_adopt, layout,config);
+    Plotly.newPlot('scatter', data_adopt, layout, config);
 
     // plotly(bar for outcome)
     var Animals_outcomekey = top5_outcome.map(d => d[0])
@@ -167,15 +168,16 @@ async function getdata(choosetype) {
             text: 'Where Did the Animals Go?',
             font: {
                 size: 24,
-                family: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif"
+                family: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+                color: '#666'
 
             }
         }
     }
 
-    var config = {responsive: true}
+    var config = { responsive: true }
     var data_bar = [trace];
-    Plotly.newPlot("bar", data_bar, layout,config );
+    Plotly.newPlot("bar", data_bar, layout, config);
 
     // charts.js doughnut chart
     new Chart(document.getElementById("doughnut-chart"), {
