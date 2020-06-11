@@ -18,8 +18,7 @@ function makeron(x) {
         var coord = d["Coord1"].split(",").map(d => +d)
         var type = d['Type']
         var location = d['Found Location'].split("(").map(d => d)
-        var location_new=location[0]
-        console.log(location_new)
+        var location_new = location[0]
         var Id = d['Animal ID']
         var paw = L.icon({
             iconUrl: 'paw.png',
