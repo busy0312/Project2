@@ -21,7 +21,7 @@ function makeron(x) {
         var location_new = location[0]
         var Id = d['Animal ID']
         var paw = L.icon({
-            iconUrl: '{{ url_for('static', filename= 'paw.png') }}',
+            iconUrl: 'https://www.pngfind.com/pngs/m/97-976597_paw-png-grey-paw-print-clip-art-transparent.png',
             iconSize: [15, 15],
             iconAnchor: [22, 94],
             popupAnchor: [-15, -80]
