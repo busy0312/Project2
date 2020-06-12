@@ -1,4 +1,4 @@
-console.log("load")
+
 // Create our initial map object
 // Set the longitude, latitude, and the starting zoom level
 const myMap = L.map("map", {
@@ -21,7 +21,7 @@ function makeron(x) {
         var location_new = location[0]
         var Id = d['Animal ID']
         var paw = L.icon({
-            iconUrl: 'https://www.pngfind.com/pngs/m/97-976597_paw-png-grey-paw-print-clip-art-transparent.png',
+            iconUrl:"static/images/paw.png",
             iconSize: [15, 15],
             iconAnchor: [22, 94],
             popupAnchor: [-15, -80]
@@ -36,7 +36,7 @@ function makeron(x) {
 }
 
 (async function () {
-    const url = 'https://raw.githubusercontent.com/busy0312/Project2/master/pet_pals/static/Found_Location.json'
+    const url = 'https://raw.githubusercontent.com/busy0312/Project2/master/Found_Location.json'
     const data = await d3.json(url);
     // var data = await d3.json("/getData");
     makeron(data)

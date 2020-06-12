@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,8 +8,8 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"></link>
+  
   <!-- CSS Link-->
   <!-- <link rel="stylesheet" type="text/css" href="static/css/style.css"> -->
   <link rel = "stylesheet" href = "{{ url_for('static', filename= 'css/style.css') }}"></link>
@@ -20,13 +19,12 @@
   <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
 </head>
 
-<body id="index">
+<!-- <body id="index"> -->
     <!-- Navigation Section -->
     <div class="navigation">
         <nav class="navbar navbar-expand-lg navbar-light">
           <a class="navbar-brand" href="/">
             <img class="nav-logo" style="zoom:50%" src="{{ url_for('static', filename= 'images/dogcatlogo.jpeg') }}" >
-            
           </a>            
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
              aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
@@ -52,9 +50,6 @@
         </nav>       
     
     </div>  
-
-  </div>
-  
   <div style = "background-image : url({{url_for('static', filename = 'images/backdrop.jpg')}})" class="hero text-center">
     <h1>Austin Animal Center: Dogs & Cats</h1>
     <p>Use the interactive charts below to explore the dataset</p>
@@ -99,8 +94,8 @@
                     </div>
                 </div>
             </div>
-            <div id="map"></div>
-        </div>
+            <!-- <div id="map"></div>
+        </div> -->
     </div>
 
     <!-- Footer Section

@@ -197,6 +197,7 @@ async function getdata(choosetype) {
         options: {
             title: {
                 fontSize: 24,
+                FontFamily:"'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
                 display: true,
                 text: 'How the Animals Were Found?'
             }

@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  font-family: Ubuntu, sans-serif;
+  font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 }
 
 html,
@@ -14,6 +14,13 @@ height:100%;
 width:100%;
 }
 
+h3{
+  color: #666666;
+  font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  margin-top: 10px;
+}
+
+
 /* Navbar */
 .navbar{
     max-height: 57px; 
@@ -24,7 +31,7 @@ width:100%;
     padding: inherit; 
     font-weight: bold; 
     /* background-color:grey; */
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 }
 
 .navbar{
@@ -56,7 +63,7 @@ width:100%;
   /* Title Class*/
   .title {
     color: grey;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
     font-weight: bolder;
     padding-top: 25px;
   }
@@ -64,7 +71,7 @@ width:100%;
   /* Paragraph */
   p {
     color: black;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
     font-size: 12;
   }
 
@@ -275,7 +282,6 @@ footer {
       
       }
     
-
     button{
         margin-right: 30px; 
       }
