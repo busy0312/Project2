@@ -28,9 +28,9 @@ function makeron(x) {
 }
 
 (async function () {
-    // const url = 'https://raw.githubusercontent.com/busy0312/Project2/master/Found_Location.json'
-    // const data = await d3.json(url);
-    var data = await d3.json("/getData");
+    const url = 'https://raw.githubusercontent.com/busy0312/Project2/master/Found_Location.json'
+    const data = await d3.json(url);
+    // var data = await d3.json("/getData");
     makeron(data)
 })()
 
