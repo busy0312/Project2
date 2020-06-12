@@ -17,13 +17,21 @@ function makeron(x) {
     var markers = x.filter(d => d["Coord1"] != null).map(d => {
         var coord = d["Coord1"].split(",").map(d => +d)
         var type = d['Type']
-        var location = d['Found Location']
+        var location = d['Found Location'].split("(").map(d => d)
+        var location_new = location[0]
         var Id = d['Animal ID']
+        var paw = L.icon({
+            iconUrl: 'paw.png',
+            iconSize: [15, 15],
+            iconAnchor: [22, 94],
+            popupAnchor: [-15, -80]
+        });
         return L.marker(coord, {
             draggable: false,
-            title: d["Found Location"]
+            title: d["Found Location"],
+            icon: paw
         }).addTo(myMap)
-        .bindPopup('<b>' + Id + '</b><br>' + type + '<br>' + location)
+        .bindPopup('<b>' + Id + '</b><br>' + type + '<br>' + location_new)
     })
 }
 
