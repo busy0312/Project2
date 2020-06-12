@@ -29,16 +29,16 @@ function handlechange() {
     d3.event.preventDefault();
     // Select the input value from the form
     var choosetype = d3.select("#selDataset").node().value;
-    console.log(choosetype);
     // clear the input value
     d3.select("#selDataset").node().value = " ";
+    d3.select(".alert-secondary").node().textContent = ' ';
     // show the id 
     d3.select("#selDataset").node().value = `${choosetype}`;
     // Build the plot with the new data
     getdata(choosetype);
 }
 // funtion to get count duplicate value in intake and outcome types
-function gettypes(x){
+function gettypes(x) {
     var animal_counts = {}, i, value;
     for (i = 0; i < x.length; i++) {
         value = x[i];
@@ -52,7 +52,7 @@ function gettypes(x){
 }
 
 // function to get ascending value
-function sortvalue(list){
+function sortvalue(list) {
     var sortable = [];
     for (var x in list) {
         sortable.push([x, list[x]]);
@@ -60,8 +60,21 @@ function sortvalue(list){
     sortable.sort(function (a, b) {
         return a[1] - b[1];
     });
-return sortable
+    return sortable
 }
+// function to get time differences
+function difftime(t1, t2) {
+    var diff = []
+    var diff_days = []
+    for (var x in t1, t2) {
+        diff.push(Math.abs(t2[x] - t1[x]))
+    }
+    var diff_days = diff.map(d => Math.ceil(d / (1000 * 60 * 60 * 24)))
+    return diff_days
+}
+
+
+
 
 async function getdata(choosetype) {
     // var url = "https://raw.githubusercontent.com/busy0312/Project2/master/Animals.csv"
@@ -69,27 +82,87 @@ async function getdata(choosetype) {
     var data = await d3.json("/getData");
     var animalData = data.map(d => d)
     var animals = animalData.filter(d => d.Animal_Type === choosetype)
+
+    var adoption = animals.filter(d => d.Outcome_Type == 'Adoption')
+
+    // get all time that animals stayed at the center
+    var animals_outcome_t = adoption.map(d => d.DateTime_Outcome)
+    var animals_intake_t = adoption.map(d => d.DateTime_Intake)
+    // parse time
+    var outcome_t = animals_outcome_t.map(d => Date.parse(d))
+    var intake_t = animals_intake_t.map(d => Date.parse(d))
+
+
+    // get all the outcome and intake types
     var animals_outcometype = animals.map(d => d.Outcome_Type)
     var animals_intaketype = animals.map(d => d.Intake_Type)
+
+
+    // To set two dates to two variables 
+    var outcome_date = outcome_t.map(d => new Date(d))
+    var intake_date = intake_t.map(d => new Date(d))
+    // how many adop every year
+    var keepyear = outcome_date.map(d => d.getFullYear())
+    var total_adopt = gettypes(keepyear)
+
+    // calculate time difference
+    const diffdays = difftime(intake_date, outcome_date)
+
+    // sum and get rid of NAN
+    const arrSum = diffdays.filter(x => x > 0).reduce((x, y) => x + y, 0)
+    // calculate avg
+    const Average_days = Math.ceil(arrSum / diffdays.length)
+    //append the data on alert bar
+    var adpt_time = d3.select('.alert-secondary')
+    adpt_time.append('h5').text(`The average time for a ${choosetype} to be adopted is ${Average_days} days.`)
+
     // counts for different outcome and intake types
     var animal_counts = gettypes(animals_outcometype)
     var animal_counts_intake = gettypes(animals_intaketype)
+
+
+    //drop undefined value
+    delete animal_counts_intake['']
     // intake value
     var intake_keys = Object.keys(animal_counts_intake)
     var intake_value = Object.values(animal_counts_intake)
-    var sortable=sortvalue(animal_counts)
+    // descending order
+    var sortable_counts = sortvalue(animal_counts)
 
     // Keep top 5 outcome type
-    var order = sortable.reverse()
+    var order = sortable_counts.reverse()
     var top5_outcome = order.slice(0, 5)
+    console.log(top5_outcome)
+    //plotly(line for adoption)
+    var trace_adopt = {
+        x: Object.keys(total_adopt),
+        y: Object.values(total_adopt),
+        marker: { color: 'blue' },
+        fill: 'tonexty',
+        type: "scatter",
+    };
+    var layout = {
+        title: {
+            text: 'Adoption over Time',
+            font: {
+                size: 24,
+                family: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+                color: '#666'
 
-    // plotly(barchart)
+            }
+        }
+    }
+    var config = { responsive: true }
+    var data_adopt = [trace_adopt];
+    Plotly.newPlot('scatter', data_adopt, layout, config);
+
+    // plotly(bar for outcome)
     var Animals_outcomekey = top5_outcome.map(d => d[0])
     var Animals_outcomevalue = top5_outcome.map(d => d[1])
     var trace = {
         x: Animals_outcomekey,
         y: Animals_outcomevalue,
-        marker: { color: 'coral' },
+        marker: { color: 'DarkSeaGreen' },
         type: "bar",
     };
     var layout = {
@@ -97,13 +170,16 @@ async function getdata(choosetype) {
             text: 'Where Did the Animals Go?',
             font: {
                 size: 24,
-                family: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif"
+                family: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+                color: '#666'
 
             }
         }
     }
+
+    var config = { responsive: true }
     var data_bar = [trace];
-    Plotly.newPlot("bar", data_bar, layout);
+    Plotly.newPlot("bar", data_bar, layout, config);
 
     // charts.js doughnut chart
     new Chart(document.getElementById("doughnut-chart"), {
@@ -126,7 +202,6 @@ async function getdata(choosetype) {
             }
         }
     });
-
 
 
 }

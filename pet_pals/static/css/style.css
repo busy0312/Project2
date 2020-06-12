@@ -41,6 +41,9 @@ body {
     
   }
 
+  canvas{
+    padding-left: 10%;
+  }
   /* Body*/
   body {
     background-color: #ededed;
@@ -74,6 +77,10 @@ body {
     background-color: white; 
   
   }
+#scatter{
+  position: relative;
+}
+
 #bar{
 margin-top:50px ;
 }
@@ -116,23 +123,25 @@ margin-top:50px ;
 
 .herodog {
   position: relative;
-  height: 500px;
+  height: 350px;
   padding: 20px;
   margin: 0;
   background: black;
   background-position: center;
-  background-image: url("../../images/dogimg.jpg");
+  background-image: url("../../images/dog2.jpg");
   background-size: cover;
 }
 
 .herodog h1 {
-  margin-top: 200px;
+  margin-top: 8%;
+  text-align: center;
   font-size: 48px;
   color: white;
   animation: title 1.2s forwards linear;
 }
 
 .herodog p {
+  text-align: center;
   font-size: 1.5rem;
   color: white;
   animation: subtitle 1.2s forwards linear;
@@ -141,17 +150,18 @@ margin-top:50px ;
 
 .herocat {
   position: relative;
-  height: 500px;
+  height: 350px;
   padding: 20px;
   margin: 0;
   background: black;
   background-position: center;
-  background-image: url("../../images/catsimg.jpg");
+  background-image: url("../../images/cat2.jpg");
   background-size: cover;
 }
 
 .herocat h1 {
-  margin-top: 200px;
+  margin-top: 8%;
+  text-align: center;
   font-size: 48px;
   color: white;
   animation: title 1.2s forwards linear;
@@ -166,17 +176,18 @@ margin-top:50px ;
 
 .herodogcat {
   position: relative;
-  height: 500px;
+  height: 350px;
   padding: 20px;
   margin: 0;
   background: black;
   background-position: center;
-  background-image: url("../../images/catdogimg.jpg");
+  background-image: url("../../images/catdog2.jpg");
   background-size: cover;
 }
 
 .herodogcat h1 {
-  margin-top: 200px;
+  margin-top: 8%;
+  text-align: center;
   font-size: 48px;
   color: white;
   animation: title 1.2s forwards linear;
@@ -259,6 +270,7 @@ footer {
         background-color: white; 
       
       }
+    
 
     button{
         margin-right: 30px; 
