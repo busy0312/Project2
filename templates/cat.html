@@ -45,7 +45,11 @@
             </ul>
           </div>            
         </nav>       
-    
+  
+    <div style = "background-image : url({{url_for('static', filename = 'images/cat2.jpg')}})" class="hero text-center">
+      <h1>Cat Data</h1>
+      <p>Detailed Graphs</p>
+    </div>
 </head>
 
 <!-- Content Section -->
@@ -96,7 +100,7 @@
         
         <!-- Leaflet heatmap plugin-->
         <!-- <script type="text/javascript" src="static/js/leaflet-heat.js"></script> -->
-        <script type = "text/javascript" src = "{{ url_for('static', filename= 'js/leaflet-heat.js') }}"></script>
+        <!-- <script type = "text/javascript" src = "{{ url_for('static', filename= 'js/leaflet-heat.js') }}"></script> -->
 
 </body>
 </html>
