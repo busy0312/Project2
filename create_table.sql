@@ -16,3 +16,4 @@ CREATE TABLE Austin_animals (
     "Age_upon_Outcome_days" VARCHAR,
     "Age_upon_Intake_days" VARCHAR
 );
+

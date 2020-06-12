@@ -28,7 +28,7 @@ db.Model.metadata.reflect(bind=db.engine)
 
 class Animal(db.Model):
     '''deal with an existing table'''
-    __table__ = db.Model.metadata.tables['austin_animals']
+    __table__ = db.Model.metadata.tables['austin_animals_db']
 
 
 # results = db.session.query(Animal.Name).all()
