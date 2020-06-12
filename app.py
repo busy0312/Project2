@@ -7,7 +7,7 @@ from flask import (
     request,
     redirect,
     url_for)
-#from config import SQL_key, Local_SQL_URI
+from config import SQL_key, Local_SQL_URI
 
 #################################################
 # Flask Setup
@@ -20,8 +20,8 @@ app = Flask(__name__)
 
 from flask_sqlalchemy import SQLAlchemy
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') or f'postgresql+psycopg2://postgres:{SQL_key}@localhost:5432/animals_db'
-#app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') or Local_SQL_URI
+#app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') or f'postgresql+psycopg2://postgres:{SQL_key}@localhost:5432/animals_db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') or Local_SQL_URI
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '')
 db = SQLAlchemy(app)
