@@ -7,7 +7,7 @@ from flask import (
     request,
     redirect,
     url_for)
-from config import SQL_key
+# from config import SQL_key
 
 #################################################
 # Flask Setup
