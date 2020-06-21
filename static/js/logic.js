@@ -120,9 +120,10 @@ async function getdata(choosetype) {
     var animal_counts = gettypes(animals_outcometype)
     var animal_counts_intake = gettypes(animals_intaketype)
 
-
-    //drop undefined value
+    //drop undefined value and null
     delete animal_counts_intake['']
+    delete animal_counts_intake['null']
+    
     // intake value
     var intake_keys = Object.keys(animal_counts_intake)
     var intake_value = Object.values(animal_counts_intake)
@@ -132,7 +133,6 @@ async function getdata(choosetype) {
     // Keep top 5 outcome type
     var order = sortable_counts.reverse()
     var top5_outcome = order.slice(0, 5)
-    console.log(top5_outcome)
     //plotly(line for adoption)
     var trace_adopt = {
         x: Object.keys(total_adopt),
