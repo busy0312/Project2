@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
     <title>Pet Wars: Cats vs Dogs</title>
 
     <!-- Bootstrap CSS -->
@@ -47,7 +48,7 @@
               <a class="nav-link" href="/data">Map</a>
             </li>
           </ul>
-        </div>            
+        <!-- </div>             -->
       </nav>       
   
   </div>  
@@ -58,9 +59,9 @@
 </div>
 
     <!-- Content Section-->
-    <div class="container">
+    <div class="container-{breakpoint}">
+      <figure class="box">
         <div class="row">
-            <div class="col-lg-7 col-md-12">
                 <div class="box" style="padding-bottom: 5px;">
                     <h3 class="title">Pet Wars: Dogs vs Cats</h3>
                     <hr>
@@ -74,8 +75,7 @@
                         </div>
                     </div>
                     <div class="alert alert-secondary" role="alert">
-                    </div>
-                    
+                    </div>             
                     <div class="row">
                         <div class="col-md-12">
                             <div id="scatter"></div>
@@ -93,14 +93,10 @@
                     </div>
                 </div>
             </div>
-            <!-- <div id="map"></div>
-        </div> -->
+          </figure>
     </div>
 
-    <!-- Footer Section
-    <footer>
-        <div class="footer">UT Data Analytics & Visualuzation Bootcamp Project 2020</div>
-    </footer> -->
+
 
   <!-- API key -->
   <!-- <script type="text/javascript" src="static/js/config.js"></script> -->
@@ -124,12 +120,7 @@
   <!-- Our JavaScript -->
   <!-- <script type="text/javascript" src="static/js/logic.js"></script> -->
   <script type = "text/javascript" src = "{{ url_for('static', filename= 'js/logic.js') }}"></script>
-  
-  <!-- Leaflet heatmap plugin-->
-  <!-- <script type="text/javascript" src="static/js/leaflet-heat.js"></script> -->
-  <!-- <script type = "text/javascript" src = "{{ url_for('static', filename= 'js/leaflet-heat.js') }}"></script> -->
 
-  <!-- <script type = "text/javascript" src = "{{ url_for('static', filename= 'js/map.js') }}"></script> -->
 </body>
 
 </html>
