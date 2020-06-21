@@ -159,11 +159,19 @@ async function getdata(choosetype) {
     // plotly(bar for outcome)
     var Animals_outcomekey = top5_outcome.map(d => d[0])
     var Animals_outcomevalue = top5_outcome.map(d => d[1])
+    // sum all the value and calculate the percentage 
+    const reducer = (accumulator, currentValue) => accumulator + currentValue;
+    var sum_outcome=Animals_outcomevalue.reduce(reducer)
+    var final=Animals_outcomevalue.map(d=>(d/sum_outcome)*100)
+   
     var trace = {
         x: Animals_outcomekey,
-        y: Animals_outcomevalue,
+        y: final,
         marker: { color: 'DarkSeaGreen' },
-        type: "bar",
+        hovertemplate: '%{y:.0f}%' +
+                        ' %{x}',
+        showlegend: false,
+        type: "bar"
     };
     var layout = {
         title: {
@@ -172,15 +180,16 @@ async function getdata(choosetype) {
                 size: 24,
                 family: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
                 color: '#666'
+            },
+            yaxis: {
+                tickformat: '.0%' 
+              }
 
-            }
         }
     }
-
     var config = { responsive: true }
     var data_bar = [trace];
     Plotly.newPlot("bar", data_bar, layout, config);
-
     // charts.js doughnut chart
     new Chart(document.getElementById("doughnut-chart"), {
         type: 'doughnut',
