@@ -1,9 +1,9 @@
 
 // //complete dropdown list
 (async function testid() {
-    var url = "https://raw.githubusercontent.com/busy0312/Project2_Austin-Animal-Center/master/Animals.csv"
-    var data = await d3.csv(url);
-//     var data = await d3.json("/getData");
+//     var url = "https://raw.githubusercontent.com/busy0312/Project2_Austin-Animal-Center/master/Animals.csv"
+//     var data = await d3.csv(url);
+    var data = await d3.json("/getData");
     var animalData = data.map(d => d)
     var type = animalData.map(d => d.Animal_Type)
     // To get dog and cat option in the dropdown
@@ -77,9 +77,9 @@ function difftime(t1, t2) {
 
 
 async function getdata(choosetype) {
-    var url = "https://raw.githubusercontent.com/busy0312/Project2_Austin-Animal-Center/master/Animals.csv"
-    var data = await d3.csv(url);
-//     var data = await d3.json("/getData");
+//     var url = "https://raw.githubusercontent.com/busy0312/Project2_Austin-Animal-Center/master/Animals.csv"
+//     var data = await d3.csv(url);
+    var data = await d3.json("/getData");
     var animalData = data.map(d => d)
     var animals = animalData.filter(d => d.Animal_Type === choosetype)
 
