@@ -2,9 +2,8 @@
 
 
 
-
+Group members
 ```
-Group members:
 Abby Ko, 
 Ray King, 
 James Barraza, 
